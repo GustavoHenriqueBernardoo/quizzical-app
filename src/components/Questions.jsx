@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Questions() {
+export default function Questions(props) {
   return (
     <div>
       <h1>How would one say goodbye in Spanish?</h1>
-      <ul>
+      <ul onClick={(event) => props.selectAnswer(event, props.isSelected)}>
         <button>1</button>
         <button>2</button>
         <button>3</button>

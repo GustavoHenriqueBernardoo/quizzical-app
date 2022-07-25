@@ -6,19 +6,24 @@ import Questions from './components/Questions';
 function App() {
 
   const [startGame, setStartGame] = React.useState(false)
+  const [isSelected, setIsSelected] = React.useState(false)
 
-  const handleStartGame = () => {
-    console.log(startGame)
+  const handleStartGame = () => setStartGame(prevState => !prevState)
 
-    setStartGame(prevState => !prevState)
-    console.log(startGame)
+  const selectAnswer = (event, selected) => {
+    console.log(event.target, selected)
+
+    setIsSelected(prevSelected => !prevSelected)
   }
+
+
 
   return (
     <div className="App">
       {startGame
-        ? <Questions />
-        : <StartQuiz handleStartGame={handleStartGame} />}
+        ? <Questions selectAnswer={selectAnswer} isSelected={isSelected} />
+        : <StartQuiz handleStartGame={handleStartGame} />
+      }
     </div>
   );
 }
